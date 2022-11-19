@@ -11,6 +11,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -114,7 +115,7 @@ public class ConfigSpec {
         logger.fine( "Load rules: " + loadRules );
         csLines.addAll( addLoad( loadRules ) );
 
-        temporaryCSFile = File.createTempFile( "ClearCase", "configspec" );
+        temporaryCSFile = Files.createTempFile( "ClearCase", "configspec" ).toFile();
         FileUtils.writeLines( temporaryCSFile, csLines );
 
         return this;
